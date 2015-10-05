@@ -1,0 +1,5 @@
+services:
+    park.twig.computer_status_extension:
+        class: ParkBundle\Twig\Extension\ComputerExtension
+        tags:
+            - { name: twig.extension }

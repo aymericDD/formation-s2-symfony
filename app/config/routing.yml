@@ -1,3 +1,9 @@
+park:
+    resource: "@ParkBundle/Controller/"
+    type:     annotation
+    prefix:   /park
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    prefix:   /
