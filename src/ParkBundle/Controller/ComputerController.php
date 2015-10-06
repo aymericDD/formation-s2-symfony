@@ -2,6 +2,7 @@
 
 namespace ParkBundle\Controller;
 
+use ParkBundle\Entity\Computer;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -14,7 +15,7 @@ class ComputerController extends Controller
      */
     public function debugAction()
     {
-        return array( "computers" => $this->getAllComputers());
+        return array( "computers" => $this->getDoctrine()->getRepository("ParkBundle:Computer")->findAll());
     }
 
     /**
@@ -23,8 +24,36 @@ class ComputerController extends Controller
     public function listComputerAction()
     {
         return $this->render("@Park/Computer/listComputer.html.twig", array(
-            "computers" => $this->getAllComputers()
+            "computers" => $this->getDoctrine()->getRepository("ParkBundle:Computer")->findAll()
         ));
+    }
+
+    /**
+     * @Route("/computer/create/")
+     */
+    public function createAction()
+    {
+        // Get manager doctrine
+        $em = $this->getDoctrine()->getManager();
+        // Get all computers and set new computers in database
+        foreach ($this->getAllComputers() as $computer) {
+            $newComputer = new Computer();
+            $newComputer->setIp($computer["ip"]);
+            $newComputer->setEnabled($computer["enabled"]);
+            $newComputer->setName($computer["name"]);
+            $em->persist($newComputer);
+        }
+        $em->flush();
+        die("Computers created ". count($this->getAllComputers()));
+    }
+
+    /**
+     * @Route("/computer/remove/all")
+     */
+    public function deleteAction()
+    {
+        $this->getDoctrine()->getRepository("ParkBundle:Computer")->removeAll();
+        die('All computes are removed');
     }
 
     /**
@@ -56,6 +85,12 @@ class ComputerController extends Controller
                 "name"  => "Ordinateur 4",
                 "ip"  => "192.168.0.4",
                 "enabled"  => false,
+            ),
+            4 => array(
+                "id"    => 5,
+                "name"  => "Ordinateur 5",
+                "ip"  => "192.168.0.5",
+                "enabled"  => true,
             ),
         );
     }
