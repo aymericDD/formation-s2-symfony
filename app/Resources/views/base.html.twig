@@ -5,6 +5,7 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('bundles/park/css/style.css') }}">
             {% stylesheets filter='lessphp, cssrewrite'
             'bundles/app/less/*'
             %}
