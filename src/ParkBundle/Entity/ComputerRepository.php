@@ -23,6 +23,9 @@ class ComputerRepository extends \Doctrine\ORM\EntityRepository
                 }
             }
             $this->_em->flush();
+            return true;
+        } else {
+            return false;
         }
     }
 }

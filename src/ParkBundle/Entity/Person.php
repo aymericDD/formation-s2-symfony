@@ -3,6 +3,7 @@
 namespace ParkBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use ParkBundle\Entity\Traits\TimestampableTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,9 +11,13 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="ParkBundle\Entity\PersonRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Person
 {
+
+    use TimestampableTrait;
+
     /**
      * @var integer
      *
@@ -35,6 +40,12 @@ class Person
      * @ORM\Column(name="lastname", type="string", length=50)
      */
     private $lastname;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="age", type="integer", length=3)
+     */
+    private $age;
 
     /**
      * @ORM\OneToMany(targetEntity="ParkBundle\Entity\Computer", mappedBy="person", cascade={"persist"})
@@ -117,6 +128,7 @@ class Person
      */
     public function addComputer(\ParkBundle\Entity\Computer $computer)
     {
+        $computer->setPerson($this);
         $this->computers[] = $computer;
 
         return $this;
@@ -140,5 +152,29 @@ class Person
     public function getComputers()
     {
         return $this->computers;
+    }
+
+    /**
+     * Set age
+     *
+     * @param integer $age
+     *
+     * @return Person
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    /**
+     * Get age
+     *
+     * @return integer
+     */
+    public function getAge()
+    {
+        return $this->age;
     }
 }

@@ -1,5 +1,21 @@
+parameters:
+    parkbundle.twig.extensions.computer.class: ParkBundle\Twig\Extension\ComputerExtension
+    parkbundle.command.togglestatus.class: ParkBundle\Command\ToggleStatusCommand
+    parkbundle.services.computer_manager.class: ParkBundle\Services\ComputerManager
+    parkbundle.services.person_manager.class: ParkBundle\Services\PersonManager
+
 services:
     park.twig.computer_status_extension:
-        class: ParkBundle\Twig\Extension\ComputerExtension
+        class: %parkbundle.twig.extensions.computer.class%
         tags:
             - { name: twig.extension }
+    parkbundle.command.toggle_status:
+        class: %parkbundle.command.togglestatus.class%
+        tags:
+            -  { name: console.command }
+    parkbundle.services.computer_manager:
+        class: %parkbundle.services.computer_manager.class%
+        arguments: [@doctrine]
+    parkbundle.services.person_manager:
+        class: %parkbundle.services.person_manager.class%
+        arguments: [@doctrine]

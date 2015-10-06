@@ -3,15 +3,19 @@
 namespace ParkBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ParkBundle\Entity\Traits\TimestampableTrait;
 
 /**
  * Computer
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="ParkBundle\Entity\ComputerRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Computer
 {
+    use TimestampableTrait;
+
     /**
      * @var integer
      *

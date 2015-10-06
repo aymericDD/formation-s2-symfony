@@ -1,0 +1,18 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Computer edit</h1>
+
+    {{ form(edit_form) }}
+
+    <ul class="record_actions list-unstyled">
+        <li>
+            <a class="btn btn-default" href="{{ path('computer') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+        {{ form(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
