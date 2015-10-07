@@ -198,6 +198,22 @@ class ComputerController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+
+    /**
+     * @param   int $var1
+     * @param   int $var2
+     *
+     * @Route("/calculator/{var1}/{var2}", name="calculator_sum")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function calculatorSumAction($var1, $var2)
+    {
+        return $this->render("@Park/Computer/Calculator/sum.html.twig", array(
+            "result"    =>  $this->get('parkbundle.services.calculator')->sum($var1, $var2)
+        ));
+    }
+
     /**
      * Deletes a Computer entity.
      *

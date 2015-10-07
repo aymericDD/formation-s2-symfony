@@ -3,6 +3,7 @@ parameters:
     parkbundle.command.togglestatus.class: ParkBundle\Command\ToggleStatusCommand
     parkbundle.services.computer_manager.class: ParkBundle\Services\ComputerManager
     parkbundle.services.person_manager.class: ParkBundle\Services\PersonManager
+    parkbundle.services.calculator.class: ParkBundle\Services\Calculator
 
 services:
     park.twig.computer_status_extension:
@@ -19,3 +20,5 @@ services:
     parkbundle.services.person_manager:
         class: %parkbundle.services.person_manager.class%
         arguments: [@doctrine]
+    parkbundle.services.calculator:
+        class: %parkbundle.services.calculator.class%
