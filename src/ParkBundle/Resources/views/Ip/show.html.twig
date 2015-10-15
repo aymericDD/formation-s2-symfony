@@ -1,10 +1,11 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Ip{% endblock %}
+{% block title %}Show Ip {{ entity.ip }}{% endblock %}
 
 {% block body -%}
-    <table class="record_properties table-bordered table">
-        <tbody>
+    <div class="container">
+        <table class="record_properties table-bordered table">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ entity.id }}</td>
@@ -21,19 +22,20 @@
                 <th>Description</th>
                 <td>{{ entity.description }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-
-    <ul class="record_actions list-unstyled">
-        <li>
-            <a class="btn-danger btn" href="{{ path('ip') }}">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back to the list
-            </a>
-            <a class="btn-success btn" href="{{ path('ip_edit', { 'id': entity.id }) }}">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+        <ul class="record_actions list-unstyled">
+            <li>
+                <a class="btn-danger btn" href="{{ path('ip') }}">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back to the list
+                </a>
+                <a class="btn-success btn" href="{{ path('ip_edit', { 'id': entity.id }) }}">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
+                </a>
+            </li>
+        </ul>
+        <hr>
+        {{ form(delete_form) }}
+    </div>
 {% endblock %}

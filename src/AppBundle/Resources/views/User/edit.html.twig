@@ -1,12 +1,12 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Computer edit{% endblock %}
+{% block title %}User edit{% endblock %}
 
 {% block body -%}
     <div class="container">
         {{ form(edit_form) }}
         <hr>
-        <a class="btn btn-default" href="{{ path('computer') }}">
+        <a href="{{ path('user') }}" class="btn-default btn">
             Back to the list
         </a>
         <hr>

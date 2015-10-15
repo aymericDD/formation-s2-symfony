@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}User creation{% endblock %}
+
+{% block body -%}
+    <div class="container">
+        {{ form(form) }}
+        <hr>
+        <a href="{{ path('user') }}" class="btn btn-default">
+            Back to the list
+        </a>
+    </div>
+{% endblock %}

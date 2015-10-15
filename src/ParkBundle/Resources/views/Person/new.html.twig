@@ -3,13 +3,15 @@
 {% block title %}Person creation{% endblock %}
 
 {% block body -%}
-    {{ form(form) }}
+    <div class="container">
+        {{ form(form) }}
 
-    <ul class="record_actions list-unstyled">
-        <li>
-            <a class="btn btn-success" href="{{ path('person') }}">
-                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to the list
-            </a>
-        </li>
-    </ul>
+        <ul class="record_actions list-unstyled">
+            <li>
+                <a class="btn btn-success" href="{{ path('person') }}">
+                    <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to the list
+                </a>
+            </li>
+        </ul>
+    </div>
 {% endblock %}

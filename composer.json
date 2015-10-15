@@ -20,7 +20,8 @@
         "braincrafted/bootstrap-bundle": "~2.1.2",
         "twbs/bootstrap": "3.0.*",
         "components/jquery":  "2.1.4",
-        "oyejorge/less.php": "v1.7.0.9"
+        "oyejorge/less.php": "v1.7.0.9",
+        "hautelook/alice-bundle": "0.2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

@@ -3,13 +3,11 @@
 {% block title %}Computer creation{% endblock %}
 
 {% block body -%}
-    {{ form(form) }}
-
-    <ul class="record_actions list-unstyled">
-        <li>
-            <a class="btn btn-success" href="{{ path('computer') }}">
-                <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to the list
-            </a>
-        </li>
-    </ul>
+    <div class="container">
+        {{ form(form) }}
+        <hr>
+        <a class="btn btn-success" href="{{ path('computer') }}">
+            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back to the list
+        </a>
+    </div>
 {% endblock %}

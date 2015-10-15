@@ -3,15 +3,19 @@
 namespace ParkBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ParkBundle\Entity\Traits\TimestampableTrait;
 
 /**
  * Ip
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="ParkBundle\Entity\IpRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Ip
 {
+    use TimestampableTrait;
+
     /**
      * @var integer
      *
@@ -27,13 +31,6 @@ class Ip
      * @ORM\Column(name="ip", type="string", length=15)
      */
     private $ip;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updatedAt", type="datetime")
-     */
-    private $updatedAt;
 
     /**
      * @ORM\Column(name="description", type="text")
@@ -72,30 +69,6 @@ class Ip
     public function getIp()
     {
         return $this->ip;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Ip
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**

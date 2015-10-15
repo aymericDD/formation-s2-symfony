@@ -35,7 +35,7 @@ class Computer
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="ParkBundle\Entity\Ip")
+     * @ORM\OneToOne(targetEntity="ParkBundle\Entity\Ip", cascade={"persist"})
      */
     private $ip;
 
@@ -47,7 +47,7 @@ class Computer
     private $enabled;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ParkBundle\Entity\Person", inversedBy="computers")
+     * @ORM\ManyToOne(targetEntity="ParkBundle\Entity\Person", inversedBy="computers", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $person;

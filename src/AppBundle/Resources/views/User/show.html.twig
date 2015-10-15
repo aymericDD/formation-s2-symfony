@@ -1,0 +1,46 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body -%}
+
+    <div class="container">
+        <table class="record_properties table table-bordered table-striped">
+            <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ entity.username }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ entity.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>
+                    {% for role in entity.roles %}
+                        {{ role }},
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <th>Enabled</th>
+                <td>{{ entity.enabled|computer_status }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <hr>
+        <a href="{{ path('user') }}" class="btn btn-default">
+            Back to the list
+        </a>
+        <a href="{{ path('user_edit', { 'id': entity.id }) }}" class="btn btn-default">
+            Edit
+        </a>
+        <hr>
+        {{ form(delete_form) }}
+    </div>
+{% endblock %}

@@ -3,14 +3,13 @@
 {% block title %}Ip edit{% endblock %}
 
 {% block body -%}
-    {{ form(edit_form) }}
-
-    <ul class="record_actions list-unstyled">
-        <li>
-            <a class="btn btn-danger" href="{{ path('ip') }}">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back to the list
-            </a>
-        </li>
-        <li>{{ form(delete_form) }}</li>
-    </ul>
+    <div class="container">
+        {{ form(edit_form) }}
+        <hr>
+        <a class="btn btn-danger" href="{{ path('ip') }}">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back to the list
+        </a>
+        <hr>
+        {{ form(delete_form) }}
+    </div>
 {% endblock %}
